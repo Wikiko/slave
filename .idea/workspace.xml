@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:release" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="CargoProjects">
+    <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="af87e880-7315-4328-96f9-580754f411bc" name="Default Changelist" comment="Iniciando desenvolvimento do slave.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="cc9ozd21" />
+  </component>
+  <component name="ProjectId" id="1h2lPAsLK0Xd6YHhQw9Vf5uSCeE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Run slave" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package slave --bin slave" />
+      <option name="allFeatures" value="false" />
+      <option name="emulateTerminal" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cargo Command.Run slave" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.asdf/shims" />
+    <option name="version" value="2" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="af87e880-7315-4328-96f9-580754f411bc" name="Default Changelist" comment="" />
+      <created>1599217041863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599217041863</updated>
+      <workItem from="1599217043444" duration="2416000" />
+      <workItem from="1599843068539" duration="896000" />
+    </task>
+    <task id="LOCAL-00001" summary="Iniciando desenvolvimento do slave.">
+      <created>1599843871221</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1599843871221</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Iniciando desenvolvimento do slave." />
+    <option name="LAST_COMMIT_MESSAGE" value="Iniciando desenvolvimento do slave." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1316" height="151" key="GridCell.Tab.0.bottom" timestamp="1599843700300">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="151" key="GridCell.Tab.0.bottom/0.28.1366.740@0.28.1366.740" timestamp="1599843700300" />
+    <state width="1870" height="276" key="GridCell.Tab.0.bottom/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463890" />
+    <state width="1316" height="151" key="GridCell.Tab.0.center" timestamp="1599843700299">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="151" key="GridCell.Tab.0.center/0.28.1366.740@0.28.1366.740" timestamp="1599843700299" />
+    <state width="1870" height="276" key="GridCell.Tab.0.center/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463889" />
+    <state width="1316" height="151" key="GridCell.Tab.0.left" timestamp="1599843700299">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="151" key="GridCell.Tab.0.left/0.28.1366.740@0.28.1366.740" timestamp="1599843700299" />
+    <state width="1870" height="276" key="GridCell.Tab.0.left/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463889" />
+    <state width="1316" height="151" key="GridCell.Tab.0.right" timestamp="1599843700300">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="151" key="GridCell.Tab.0.right/0.28.1366.740@0.28.1366.740" timestamp="1599843700300" />
+    <state width="1870" height="276" key="GridCell.Tab.0.right/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463889" />
+    <state x="278" y="118" width="800" height="558" key="Vcs.Push.Dialog.v2" timestamp="1599843935161">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="278" y="118" width="800" height="558" key="Vcs.Push.Dialog.v2/0.28.1366.740@0.28.1366.740" timestamp="1599843935161" />
+  </component>
+</project>
