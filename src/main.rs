@@ -1,10 +1,13 @@
-use std::fs::File;
-use std::io;
-use std::io::{BufRead, BufReader};
+use std::collections::HashMap;
+use std::fs::{File, rename, remove_file};
+use std::io::{BufRead, BufReader, LineWriter, Write};
 
 use structopt::StructOpt;
 
-#[derive(StructOpt, Debug)]
+use ReleaseTypes::*;
+use std::process::Command;
+
+#[derive(StructOpt, Debug, PartialEq, Eq, Hash)]
 enum ReleaseTypes {
     MAJOR,
     MINOR,
@@ -18,14 +21,15 @@ struct Cli {
 }
 
 struct AndroidVersionUpgrader {
-    file: File,
+    file_path: String,
     current_version_code: u8,
-    current_version_name: String,
+    current_version_name: HashMap<ReleaseTypes, u8>,
 }
 
 impl AndroidVersionUpgrader {
     pub fn new() -> Result<AndroidVersionUpgrader, Box<dyn std::error::Error>> {
-        let file = File::open("./build.gradle")?;
+        let file_path = String::from("./build.gradle");
+        let file = File::open(&file_path)?;
         let reader = BufReader::new(&file);
         let mut version_name = String::new();
         let mut version_code: u8 = 0;
@@ -49,10 +53,24 @@ impl AndroidVersionUpgrader {
             }
         }
 
+        let mut map: HashMap<ReleaseTypes, u8> = HashMap::new();
+        let splited_version_name: Vec<&str> = version_name.split(".").collect();
+        map.insert(MAJOR, splited_version_name[0]
+            .parse()
+            .expect("Não foi possível pegar a versão MAJOR"));
+        map.insert(MINOR, splited_version_name[1]
+            .parse()
+            .expect("Não foi possível pegar a versão MINOR"));
+        map.insert(PATCH, splited_version_name[2]
+            .parse()
+            .expect("Não foi possível pegar a versão PATCH"));
+
+        let map = map;
+
         Ok(AndroidVersionUpgrader {
-            file,
+            file_path,
             current_version_code: version_code,
-            current_version_name: version_name,
+            current_version_name: map,
         })
     }
 
@@ -60,56 +78,104 @@ impl AndroidVersionUpgrader {
         self.current_version_code + 1
     }
 
-    fn get_next_version_name(&self, release_type: ReleaseTypes) -> Result<String, Box<dyn std::error::Error>> {
-        let splited_version_name = self.current_version_name.split(".");
+    fn get_current_version_name(&self) -> String {
+        let version_name_vec = [
+            self.current_version_name[&MAJOR].to_string(),
+            self.current_version_name[&MINOR].to_string(),
+            self.current_version_name[&PATCH].to_string()
+        ];
+        self.format_version_name(&version_name_vec)
+    }
+
+    fn get_next_version_name(&self, release_type: &ReleaseTypes) -> String {
         match release_type {
-            ReleaseTypes::MAJOR => {
-                Ok(String::new())
+            MAJOR => {
+                let mut major = self.current_version_name[&MAJOR];
+                major += 1;
+                let new_version_name = [
+                    major.to_string(),
+                    String::from("0"),
+                    String::from("0")
+                ];
+                self.format_version_name(&new_version_name)
             }
-            ReleaseTypes::MINOR => {
-                Ok(String::new())
+            MINOR => {
+                let mut minor = self.current_version_name[&MINOR];
+                minor += 1;
+                let new_version_name = [
+                    self.current_version_name[&MAJOR].to_string(),
+                    minor.to_string(),
+                    String::from("0")
+                ];
+                self.format_version_name(&new_version_name)
             }
-            ReleaseTypes::PATCH => {
-                let last = splited_version_name.last().unwrap();
-                let last: u8 = last.parse()?;
-                let last = last + 1;
-                println!("{}", last);
-                Ok(String::new())
+            PATCH => {
+                let mut patch = self.current_version_name[&PATCH];
+                patch += 1;
+                let new_version_name = [
+                    self.current_version_name[&MAJOR].to_string(),
+                    self.current_version_name[&MINOR].to_string(),
+                    patch.to_string()
+                ];
+                self.format_version_name(&new_version_name)
             }
         }
+    }
+
+    fn format_version_name(&self, vec: &[String; 3]) -> String {
+        vec.join(".")
+    }
+
+    fn upgrade(&self, release_type: ReleaseTypes) -> Result<(), Box<dyn std::error::Error>> {
+        let new_file_path = format!("{}.new", &self.file_path);
+        let file = File::open(&self.file_path)?;
+        let new_file = File::create(&new_file_path)?;
+        let reader = BufReader::new(&file);
+        let mut writer = LineWriter::new(new_file);
+        for line in reader.lines() {
+            let line = line?;
+            let mut to_write = line.clone();
+            if line.contains("versionName") {
+                let new_version_name = line
+                    .replace(
+                        &self.get_current_version_name(),
+                        &self.get_next_version_name(&release_type),
+                    );
+                to_write = new_version_name;
+            }
+            if line.contains("versionCode ") {
+                let new_version_code = line
+                    .replace(
+                        &self.current_version_code.to_string(),
+                        &self.get_next_version_code().to_string()
+                    );
+                to_write = new_version_code;
+            }
+            writeln!(writer, "{}", to_write)?;
+        }
+        writer.flush()?;
+
+        remove_file(&self.file_path)?;
+        rename(&new_file_path, &self.file_path)?;
+
+        Ok(())
     }
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli: Cli = Cli::from_args();
+
     let android_version_upgrader = AndroidVersionUpgrader::new()?;
-    println!("version_code: {}", android_version_upgrader.current_version_code);
-    println!("version_name: {}", android_version_upgrader.current_version_name);
-    println!("nextVersioName: {:?}", android_version_upgrader.get_next_version_name(cli.release_type)?);
 
-    Ok(())
-}
 
-fn increment_version_of_gradle() -> Result<(), io::Error> {
-    let file = File::open("./build.gradle")?;
-    let reader = BufReader::new(file);
+    Command::new("git")
+        .arg("checkout")
+        .arg("-b")
+        .arg("master")
+        .arg(format!("release/{}", android_version_upgrader.get_next_version_name(&cli.release_type)))
+        .spawn()?;
 
-    for line in reader.lines() {
-        let line = line?;
-        if line.contains("versionName") {
-            let version_name = line
-                .split_whitespace()
-                .last()
-                .expect("version name não encontrado");
-            let version_name = version_name.replace("\"", "");
-            let test = version_name.split(".");
-            if let Some(last_version_number) = test.last() {
-                let last_version_number: i32 = last_version_number
-                    .parse()
-                    .expect("Algo de errado não está certo");
-            }
-        }
-    }
+    android_version_upgrader.upgrade(cli.release_type)?;
 
     Ok(())
 }
