@@ -1,0 +1,26 @@
+{
+  "name": "slave",
+  "version": "2.0.3",
+  "private": true,
+  "scripts": {
+    "run-android": "npx jetify && react-native run-android",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint .",
+    "reverse:reactotron": "adb reverse tcp:9090 tcp:9090",
+    "reverse:metro": "adb reverse tcp:8081 tcp:8081"
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./src/assets/fonts/"
+    ]
+  }
+}

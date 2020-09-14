@@ -14,6 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af87e880-7315-4328-96f9-580754f411bc" name="Default Changelist" comment="Começando a melhorar">
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
@@ -24,6 +25,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="release/1.0.6" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
@@ -43,6 +49,11 @@
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Run slave" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="channel" value="DEFAULT" />
@@ -58,6 +69,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cargo Command.Run slave" />
         <item itemvalue="Cargo Command.Run slave" />
       </list>
     </recent_temporary>
@@ -135,9 +147,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="Melhorias." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="768" y="273" width="374" height="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1600085175366">
-      <screen x="0" y="28" width="1920" height="1052" />
+    <state x="546" y="200" width="323" height="392" key="#com.intellij.ide.util.MemberChooser" timestamp="1600118163267">
+      <screen x="0" y="28" width="1366" height="740" />
     </state>
+    <state x="546" y="200" width="323" height="392" key="#com.intellij.ide.util.MemberChooser/0.28.1366.740/1920.178.1366.768@0.28.1366.740" timestamp="1600118163267" />
     <state x="768" y="273" width="374" height="560" key="#com.intellij.ide.util.MemberChooser/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600085175366" />
     <state width="1870" height="337" key="GridCell.Tab.0.bottom" timestamp="1600087706217">
       <screen x="0" y="28" width="1920" height="1052" />
@@ -163,15 +176,25 @@
     <state width="633" height="214" key="GridCell.Tab.0.right/0.28.1366.740@0.28.1366.740" timestamp="1599845495414" />
     <state width="1870" height="276" key="GridCell.Tab.0.right/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463889" />
     <state width="1870" height="337" key="GridCell.Tab.0.right/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600087706217" />
+    <state x="412" y="133" width="540" height="524" key="StructurePopup" timestamp="1600117929846">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="412" y="133" width="540" height="524" key="StructurePopup/0.28.1366.740/1920.178.1366.768@0.28.1366.740" timestamp="1600117929846" />
     <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1600108334347">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="278" y="118" width="800" height="558" key="Vcs.Push.Dialog.v2/0.28.1366.740@0.28.1366.740" timestamp="1599843988593" />
     <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600108334347" />
     <state x="0" y="156" width="1920" height="794" key="Vcs.Push.Dialog.v2/0.28.3286.1052@0.28.3286.1052" timestamp="1599855584661" />
-    <state x="687" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1599851721327">
+    <state x="644" y="255" key="run.anything.popup" timestamp="1600110111244">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="644" y="255" key="run.anything.popup/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600110111244" />
+    <state x="687" y="89" width="673" height="679" key="search.everywhere.popup" timestamp="1600118071984">
       <screen x="0" y="28" width="1366" height="740" />
     </state>
+    <state x="687" y="89" width="673" height="679" key="search.everywhere.popup/0.28.1366.740/1920.178.1366.768@0.28.1366.740" timestamp="1600118071984" />
     <state x="687" y="89" width="672" height="678" key="search.everywhere.popup/0.28.1366.740@0.28.1366.740" timestamp="1599851721327" />
+    <state x="966" y="115" width="945" height="964" key="search.everywhere.popup/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600108984677" />
   </component>
 </project>
