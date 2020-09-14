@@ -169,7 +169,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
     Command::new("git")
-        .arg("checkout")
+        .arg("branch")
         .arg("-b")
         .arg("master")
         .arg(format!("release/{}", android_version_upgrader.get_next_version_name(&cli.release_type)))

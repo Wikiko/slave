@@ -6,11 +6,6 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:release" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
@@ -85,7 +80,7 @@
       <workItem from="1599851455529" duration="3330000" />
       <workItem from="1600082674389" duration="5024000" />
       <workItem from="1600099417056" duration="4140000" />
-      <workItem from="1600107419803" duration="880000" />
+      <workItem from="1600107419803" duration="1010000" />
     </task>
     <task id="LOCAL-00001" summary="Iniciando desenvolvimento do slave.">
       <created>1599843871221</created>
@@ -108,7 +103,14 @@
       <option name="project" value="LOCAL" />
       <updated>1599855583008</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Melhorias.">
+      <created>1600108333237</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1600108333237</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,7 +131,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Iniciando desenvolvimento do slave." />
     <MESSAGE value="Começando a melhorar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Começando a melhorar" />
+    <MESSAGE value="Melhorias." />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorias." />
   </component>
   <component name="WindowStateProjectService">
     <state x="768" y="273" width="374" height="560" key="#com.intellij.ide.util.MemberChooser" timestamp="1600085175366">
@@ -160,10 +163,11 @@
     <state width="633" height="214" key="GridCell.Tab.0.right/0.28.1366.740@0.28.1366.740" timestamp="1599845495414" />
     <state width="1870" height="276" key="GridCell.Tab.0.right/0.28.1920.1052/1920.118.1366.768@0.28.1920.1052" timestamp="1599219463889" />
     <state width="1870" height="337" key="GridCell.Tab.0.right/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600087706217" />
-    <state x="0" y="156" width="1920" height="794" key="Vcs.Push.Dialog.v2" timestamp="1599855584661">
-      <screen x="0" y="28" width="3286" height="1052" />
+    <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2" timestamp="1600108334347">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="278" y="118" width="800" height="558" key="Vcs.Push.Dialog.v2/0.28.1366.740@0.28.1366.740" timestamp="1599843988593" />
+    <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600108334347" />
     <state x="0" y="156" width="1920" height="794" key="Vcs.Push.Dialog.v2/0.28.3286.1052@0.28.3286.1052" timestamp="1599855584661" />
     <state x="687" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1599851721327">
       <screen x="0" y="28" width="1366" height="740" />
