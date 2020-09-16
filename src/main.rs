@@ -258,10 +258,6 @@ impl PackageJsonUpgrader {
         })
     }
 
-    fn get_current_version(&self) -> String {
-        self.current_version.to_string()
-    }
-
     fn upgrade(&self, release_type: &ReleaseTypes) -> Result<(), Box<dyn std::error::Error>> {
         let new_file_path = format!("{}.new", &self.file_path);
         let file = File::open(&self.file_path)?;

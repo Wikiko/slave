@@ -17,10 +17,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af87e880-7315-4328-96f9-580754f411bc" name="Default Changelist" comment="Alterações para melhoria do código.">
-      <change afterPath="$PROJECT_DIR$/slave.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
@@ -33,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="release/1.0.6" />
+        <entry key="$PROJECT_DIR$" value="release/2.0.10" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,6 +75,9 @@
       <list>
         <item itemvalue="Cargo Command.Run slave" />
         <item itemvalue="Cargo Command.Run slave" />
+        <item itemvalue="Cargo Command.Run slave" />
+        <item itemvalue="Cargo Command.Run slave" />
+        <item itemvalue="Cargo Command.Run slave" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +101,7 @@
       <workItem from="1600099417056" duration="4140000" />
       <workItem from="1600107419803" duration="1010000" />
       <workItem from="1600168000763" duration="1811000" />
-      <workItem from="1600253946174" duration="1968000" />
+      <workItem from="1600253946174" duration="2157000" />
     </task>
     <task id="LOCAL-00001" summary="Iniciando desenvolvimento do slave.">
       <created>1599843871221</created>
@@ -138,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1600118800146</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Melhorias e adicionado arquivo de configuração do CLI">
+      <created>1600255972822</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1600255972822</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +168,8 @@
     <MESSAGE value="Começando a melhorar" />
     <MESSAGE value="Melhorias." />
     <MESSAGE value="Alterações para melhoria do código." />
-    <option name="LAST_COMMIT_MESSAGE" value="Alterações para melhoria do código." />
+    <MESSAGE value="Melhorias e adicionado arquivo de configuração do CLI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Melhorias e adicionado arquivo de configuração do CLI" />
   </component>
   <component name="WindowStateProjectService">
     <state x="546" y="200" width="323" height="392" key="#com.intellij.ide.util.MemberChooser" timestamp="1600118163267">
@@ -198,12 +206,12 @@
     </state>
     <state x="412" y="133" width="540" height="524" key="StructurePopup/0.28.1366.740/1920.178.1366.768@0.28.1366.740" timestamp="1600117929846" />
     <state x="579" y="177" width="760" height="745" key="StructurePopup/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600255319402" />
-    <state x="365" y="119" width="589" height="371" key="Vcs.Push.Dialog.v2" timestamp="1600118817876">
-      <screen x="0" y="28" width="1366" height="740" />
+    <state x="513" y="157" width="589" height="371" key="Vcs.Push.Dialog.v2" timestamp="1600255981174">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="365" y="119" width="589" height="371" key="Vcs.Push.Dialog.v2/0.28.1366.740/1920.178.1366.768@0.28.1366.740" timestamp="1600118817876" />
     <state x="278" y="118" width="800" height="558" key="Vcs.Push.Dialog.v2/0.28.1366.740@0.28.1366.740" timestamp="1599843988593" />
-    <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600108334347" />
+    <state x="513" y="157" width="800" height="527" key="Vcs.Push.Dialog.v2/0.28.1920.1052/1920.178.1366.768@0.28.1920.1052" timestamp="1600255981174" />
     <state x="0" y="156" width="1920" height="794" key="Vcs.Push.Dialog.v2/0.28.3286.1052@0.28.3286.1052" timestamp="1599855584661" />
     <state x="644" y="255" key="run.anything.popup" timestamp="1600110111244">
       <screen x="0" y="28" width="1920" height="1052" />
