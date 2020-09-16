@@ -1,13 +1,20 @@
 use std::collections::HashMap;
+use std::fmt::{Display, Formatter};
+use std::fmt;
 use std::fs::{File, remove_file, rename};
 use std::io::{BufRead, BufReader, LineWriter, Write};
 use std::process::{Command, exit};
 
+use serde::Deserialize;
 use structopt::StructOpt;
 
 use ReleaseTypes::*;
-use std::fmt::{Display, Formatter};
-use std::fmt;
+
+#[derive(Deserialize, Debug)]
+struct Config {
+    android: String,
+    package: String,
+}
 
 #[derive(StructOpt, Debug, PartialEq, Eq, Hash, Clone)]
 enum ReleaseTypes {
@@ -150,9 +157,8 @@ struct AndroidVersionUpgrader {
 }
 
 impl AndroidVersionUpgrader {
-    pub fn new(current_version: SemanticVersion) -> Result<AndroidVersionUpgrader, Box<dyn std::error::Error>> {
-        let file_path = String::from("./build.gradle");
-        let file = File::open(&file_path)?;
+    pub fn new(gradle_path: &String, current_version: SemanticVersion) -> Result<AndroidVersionUpgrader, Box<dyn std::error::Error>> {
+        let file = File::open(&gradle_path)?;
         let reader = BufReader::new(&file);
         let mut version_code: u8 = 0;
 
@@ -169,7 +175,7 @@ impl AndroidVersionUpgrader {
         }
 
         Ok(AndroidVersionUpgrader {
-            file_path,
+            file_path: gradle_path.clone(),
             current_version_code: version_code,
             current_version,
         })
@@ -225,13 +231,12 @@ impl AndroidVersionUpgrader {
 
 struct PackageJsonUpgrader {
     file_path: String,
-    current_version: SemanticVersion
+    current_version: SemanticVersion,
 }
 
 impl PackageJsonUpgrader {
-    fn new() -> Result<PackageJsonUpgrader, Box<dyn std::error::Error>> {
-        let file_path = String::from("./package.json");
-        let file = File::open(&file_path)?;
+    fn new(package_path: &String) -> Result<PackageJsonUpgrader, Box<dyn std::error::Error>> {
+        let file = File::open(&package_path)?;
         let reader = BufReader::new(&file);
         let mut version_string = String::new();
 
@@ -248,7 +253,7 @@ impl PackageJsonUpgrader {
         }
 
         Ok(PackageJsonUpgrader {
-            file_path,
+            file_path: package_path.clone(),
             current_version: SemanticVersion::from_string(&version_string),
         })
     }
@@ -285,28 +290,44 @@ impl PackageJsonUpgrader {
     }
 }
 
+fn read_config() -> Config {
+    let file_config = File::open("./slave.json")
+        .expect("Não foi possível abrir o arquivo de configuração slave.json");
+    serde_json::from_reader(file_config).expect("Formato do arquivo invalido!")
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli: Cli = Cli::from_args();
 
-    let package_upgrader = PackageJsonUpgrader::new()?;
+    println!("Lendo arquivo de configuração");
+    let config = read_config();
+
+    let package_upgrader = PackageJsonUpgrader::new(&config.package)?;
 
     let next_version = &package_upgrader
         .current_version.next_version(&cli.release_type);
 
-    let android_version_upgrader = AndroidVersionUpgrader::new(package_upgrader.current_version.clone())?;
+    let android_version_upgrader = AndroidVersionUpgrader::new(
+        &config.android,
+        package_upgrader.current_version.clone()
+    )?;
 
-    // let git_checkout = Command::new("git")
-    //     .arg("checkout")
-    //     .arg("-b")
-    //     .arg(format!("release/{}", &next_version))
-    //     .arg("master")
-    //     .status()?;
-    //
-    // if !git_checkout.success() {
-    //     exit(git_checkout.code().unwrap());
-    // }
+    println!("Criando a branch release/{}", &next_version);
 
+    let git_checkout = Command::new("git")
+        .arg("checkout")
+        .arg("-b")
+        .arg(format!("release/{}", &next_version))
+        .arg("master")
+        .status()?;
+
+    if !git_checkout.success() {
+        exit(git_checkout.code().unwrap());
+    }
+
+    println!("Atualizando a versão no android");
     android_version_upgrader.upgrade(&cli.release_type)?;
+    println!("Atualizando a versão no package.json");
     package_upgrader.upgrade(&cli.release_type)?;
 
     Ok(())

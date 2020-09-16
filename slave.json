@@ -1,0 +1,4 @@
+{
+  "android": "./build.gradle",
+  "package": "./package.json"
+}
