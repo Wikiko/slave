@@ -1,4 +1,5 @@
 {
+  "develop_branch": "master",
   "android": "./build.gradle",
   "package": "./package.json"
 }

@@ -12,6 +12,7 @@ use ReleaseTypes::*;
 
 #[derive(Deserialize, Debug)]
 struct Config {
+    develop_branch: String,
     android: String,
     package: String,
 }
@@ -314,7 +315,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         .arg("checkout")
         .arg("-b")
         .arg(format!("release/{}", &next_version))
-        .arg("master")
+        .arg(&config.develop_branch)
         .status()?;
 
     if !git_checkout.success() {
