@@ -1,5 +1,6 @@
 {
   "develop_branch": "master",
   "android": "./build.gradle",
+  "ios": "./project.pbxproj",
   "package": "./package.json"
 }

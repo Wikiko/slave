@@ -1,6 +1,6 @@
 {
   "name": "slave",
-  "version": "2.1.0",
+  "version": "3.3.0",
   "private": true,
   "scripts": {
     "run-android": "npx jetify && react-native run-android",

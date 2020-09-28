@@ -14,6 +14,7 @@ use ReleaseTypes::*;
 struct Config {
     develop_branch: String,
     android: String,
+    ios: String,
     package: String,
 }
 
@@ -151,6 +152,51 @@ impl SemanticVersion {
     }
 }
 
+struct IOSVersionUpgrader {
+    file_path: String,
+    current_version: SemanticVersion,
+}
+
+impl IOSVersionUpgrader {
+    pub fn new(pbxproj_path: &String, current_version: SemanticVersion) -> IOSVersionUpgrader {
+        IOSVersionUpgrader {
+            file_path: pbxproj_path.clone(),
+            current_version,
+        }
+    }
+
+    fn upgrade(&self, release_type: &ReleaseTypes) -> Result<(), Box<dyn std::error::Error>> {
+        let new_file_path = format!("{}.new", &self.file_path);
+        let file = File::open(&self.file_path)?;
+        let new_file = File::create(&new_file_path)?;
+        let reader = BufReader::new(&file);
+        let mut writer = LineWriter::new(new_file);
+
+        let new_marketing_version_string = format!(
+            " {};",
+            &self.current_version.next_version(&release_type).to_string()
+        );
+
+        for line in reader.lines() {
+            let line = line?;
+            let mut to_write = line.clone();
+            if line.contains("MARKETING_VERSION") {
+                let mut new_marketing_version : Vec<&str>= line.split("=").collect();
+                new_marketing_version[1] = &new_marketing_version_string;
+                to_write = new_marketing_version.join("=");
+            }
+            writeln!(writer, "{}", to_write)?;
+        }
+
+        writer.flush()?;
+
+        remove_file(&self.file_path)?;
+        rename(&new_file_path, &self.file_path)?;
+
+        Ok(())
+    }
+}
+
 struct AndroidVersionUpgrader {
     file_path: String,
     current_version_code: u8,
@@ -159,7 +205,7 @@ struct AndroidVersionUpgrader {
 
 impl AndroidVersionUpgrader {
     pub fn new(gradle_path: &String, current_version: SemanticVersion) -> Result<AndroidVersionUpgrader, Box<dyn std::error::Error>> {
-        let file = File::open(&gradle_path)?;
+        let file = File::open(gradle_path)?;
         let reader = BufReader::new(&file);
         let mut version_code: u8 = 0;
 
@@ -306,8 +352,13 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let android_version_upgrader = AndroidVersionUpgrader::new(
         &config.android,
-        package_upgrader.current_version.clone()
+        package_upgrader.current_version.clone(),
     )?;
+
+    let ios_version_upgrader = IOSVersionUpgrader::new(
+        &config.ios,
+        package_upgrader.current_version.clone(),
+    );
 
     println!("Criando a branch release/{}", &next_version);
 
@@ -322,10 +373,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         exit(git_checkout.code().unwrap());
     }
 
-    println!("Atualizando a versão no android");
-    android_version_upgrader.upgrade(&cli.release_type)?;
     println!("Atualizando a versão no package.json");
     package_upgrader.upgrade(&cli.release_type)?;
-
+    println!("Atualizando a versão no Android");
+    android_version_upgrader.upgrade(&cli.release_type)?;
+    println!("Atualizando a versão no IOS");
+    ios_version_upgrader.upgrade(&cli.release_type)?;
     Ok(())
 }
